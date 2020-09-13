@@ -11,9 +11,6 @@ Node and `virtualenv` are development dependencies and are not needed for produc
 * Install the dependencies on your machine
 * Populate the database
 
-**Notes**
-* The setup script will set everything up and install all the dependencies
-`source scripts/setup.sh`. **THIS MUST BE EXECUTED FROM THE ROOT OF THE PROJECT** You should run this when ever you open a terminal to work on this project.
 
 ## Clone or Fork the Project
 
@@ -49,80 +46,20 @@ Change the permissions Loevel of the node_modules folder
 `sudo npm install nodemon`
 `sudo npm install -g cordova`
 `sudo apt-get install yarn`
-`sudo npm install -g framework7-cli`
 `sudo npm install -g npx`
 `sudo npm install -g @vue/cli`
 `sudo pip3 install virtualenv`
-`sudo apt-get install ghostscript`
 restart Ubuntu
 
-### Installing Spatial Database
-Follow the Django Installation instructions. for installation at this link -> Installing PostGIS:
-https://docs.djangoproject.com/en/dev/ref/contrib/gis/
-
-Follow the direction to install GEOS and PROJ.4, but not GDAL (Installed from different method below)
-Make the installation in your /usr/local/bin folder on your system
-
-You will need the following links and packages to complete the installation:
-
-#### GEOS
-> wget https://download.osgeo.org/geos/geos-3.8.0rc3.tar.bz2
->tar xjf geos-3.8.0rc3.tar.bz2
-...follow instructions on Django website
->sudo ldconfig
-
-
-#### PROJ.4
-##### If you hava a WSL system
-`sudo apt install libtiff5-dev libcurl4-gnutls-dev libsqlite3-dev libtiff-dev pkg-config pkg-kde-tools sharutils sqlite3 xz-utils`
-`sudo apt-get install binutils libproj-dev gdal-bin`
-
->sudo wget https://download.osgeo.org/proj/proj-7.0.1RC1.tar.gz
->sudo wget https://download.osgeo.org/proj/proj-datumgrid-north-america-1.4RC1.tar.gz
-
->sudo tar xzf proj-7.0.1RC1.tar.gz
->sudo tar xzf ../../proj-datumgrid-north-america-1.4RC1.tar.gz
-
-...follow instructions on Django website
-* Optional Configuration Settings if installation doesnt work initially. (on the ./configure step)
-`sudo ./configure SQLITE3_CFLAGS="-I$sqliteDir/include" SQLITE3_LIBS="-L$sqliteDir/lib -lsqlite3" `
-`sudo ./configure -prefix=/opt/proj-7.0.1 SQLITE3_CFLAGS="-I$sqliteDir/include" SQLITE3_LIBS="-L$sqliteDir/lib -lsqlite3"`
-
->sudo ldconfig
-
-#### GDAL
-Download file from: https://launchpad.net/ubuntu/+source/gdal/2.2.3+dfsg-2
-`sudo wget https://download.osgeo.org/gdal/3.0.4/gdal-3.0.4.tar.gz`
-`sudo tar xzf gdal_2.2.3+dfsg.orig.tar.xz`
-`sudo ./configure --with-python="python3"`
-
-sudo ldconfig
-
-#### PostGIS
-Instructions: https://postgis.net/docs/postgis_installation.html#install_short_version
-
-`wget http://postgis.net/stuff/postgis-3.0.2dev.tar.gz`
-`tar -xvzf postgis-3.0.2dev.tar.gz`
-`sudo sudo ./configure`
-`sudo make`
-`sudo sudo make instal`l
-`cd ..`
-
-#### Create Database Extension
-`sudo su postgres`
-`psql -d databaseName -c "CREATE EXTENSION postgis;"`
-
-#### Populate Database
-Run the commands from the `/backend` directory
-`manage.py migrate cities`
-`manage.py cities --import=all`
-
-#### User PostGIS
-import to use in Models with the following import statement:
-`from django.contrib.gis.db import models`
 
 ## Running the project
-To start the development server run `devserver`. This will start Django and
+
+**Notes**
+* The setup script will set everything up and install all the dependencies
+`source scripts/setup.sh`. **THIS MUST BE EXECUTED FROM THE ROOT OF THE PROJECT** You should run this when ever you open a terminal to work on this project.
+
+
+* To start the development server run `develop`. This will start Django and
 Webpack
 
 ## Directory structurer
@@ -155,17 +92,6 @@ This directory holds scripts for helping with the development process.
 
 When the development environment is activated, the `scripts` directory is
 pre-pended to your path.
-
-## Updating the database
-When a model is changed the databse needs to be migrated. To do this run
-`manage.py makemigrations` to stage the changes. This will update files in
-the app and they need to commited. To migrate the data base run,
-`manage.py migrate`.
-run the following commands to populate the Database from the `/backend` directory
-`manage.py loaddata holidays`
-`manage.py loaddata days-of-week`
-`manage.py loaddata industries`
-
 
 ## API documents
 This project uses self documenting tools for API references. They can be found

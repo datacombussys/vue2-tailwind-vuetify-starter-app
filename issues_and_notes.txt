@@ -1,0 +1,68 @@
+How to set up a cron job
+Install https://github.com/coderholic/django-cities and a spatial databse?
+
+Need to do: delete files from Django root
+Delete Files in Root  Delete files in AWS s3 
+https://stackoverflow.com/questions/20516570/django-delete-file-from-amazon-s3
+
+How to activate and deactivate Line on floorplan maker to push items into array.
+Line Activation and deactivation not working. drawActiveLine() function. Still cant figure it out.
+
+Bulk Upload map all fields / convert Category name to an ID / Convert Date to UNIX Convert Parent to ID???
+recall same function and pop item off the stack
+
+I am using a CDN to import Mustache. I want to download it and serve it from my server in case of situatiotn of going offline
+
+
+AWS Upload custom File Directory. Django Storages
+
+When I create a credit card, The returned object does not include the modified fields. How do I return all fields from Django-rest?
+
+I need to start going through the documentation for the pinpad integration.
+
+How to submit custom queries to PayCycleRecurrence? -rrule field
+
+The Unique_together variable in Django only makes the fields unique e.g: company and HolidayName. That means that all companies cannot have the same holidayName. 
+But Partners can use the same name. It is between 2 relationships and not 3 or 4.
+
+How do I create a stack for the notifications?
+
+I have a questions on Django permissions. When I add a permission to a user, it allows a user to perform that particular funciton. 
+Which means that it was disabled before? How do permissions grant access when access was already accessible?
+
+let PROD = process.env.NODE_ENV === 'production';
+I have keditor up and running. Need to configure Database. Install Axios? Set up a Store, etc...
+Help me get it setup
+
+
+How would I ensure that only the content for a company witht the domain "datacom" shows up if the URL contains "datacom"
+
+
+
+Employee Password Regex Checkmarks not responsive
+
+I need to change to uplaod path to Amazon AWS for employees to /employee/name.
+I need to figure out how to delete the files from Amazon AWS using a CRON job. What script do I need to write
+When I delete an model instance with an image, I need to do a pre delete signal to capture the necessary informaiton of the file to be deleted.
+Delete Request - https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjects.html
+Delete XML Information - https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObjects-property
+What is pickling?
+
+Need to do
+Invoicing Merchants
+Notifications
+permissions
+allow to set up users as admins for companies. Disable feature for non super-users
+
+
+
+
+Notes for thought
+Disable things that are not woring Global Verison Number
+Offer Feedback for features and such
+capture informaiotn about where they are Track them
+log info combined with a feedback section for fixing issues.
+Where do i want my feedback button?
+tooltips are good
+
+

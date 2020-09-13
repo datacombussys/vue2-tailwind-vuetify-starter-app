@@ -1,0 +1,31 @@
+@import "./variables.scss";
+
+html,
+body {
+	margin: 0px;
+	min-height: 100%;
+	height: 100%;
+	overflow: hidden;
+	font-family: 'Open Sans', sans-serif;
+	#app {
+		font-family: 'Open Sans Regular', sans-serif;
+		font-size: 1.15em;
+		line-height: 1.75em;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		color: #2c3e50;
+		min-height: 100%;
+		height: 100%;
+		width: 100%;
+		text-align: left;
+		.page-container {
+			min-height: 100%;
+			height: 100%;
+		}
+	}
+}
+#root {
+  min-height: 100%;
+	height: 100%;
+	font-family: 'Open Sans', sans-serif;
+}

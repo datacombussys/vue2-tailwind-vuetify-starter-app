@@ -10,17 +10,17 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
+    },
+    "proxy": {
+      "/django": {
+        "target": "http://localhost:9010",
+        "secure": false
+      },
+      "/node": {
+        "target": "http://localhost:9020",
+        "secure": false
+      }
     }
-    // "proxy": {
-    //   "/django": {
-    //     "target": "http://localhost:9010",
-    //     "secure": false
-    //   },
-    //   "/node": {
-    //     "target": "http://localhost:9020",
-    //     "secure": false
-    //   }
-    // }
   },
   configureWebpack: {
     module: {

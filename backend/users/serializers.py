@@ -11,7 +11,7 @@ from rest_framework import exceptions
 
 from django.contrib.auth.models import Permission, Group
 from django.contrib.contenttypes.models import ContentType
-from users.models import User, UserGroup, UserPermission
+from users.models import User
 from drf_base64.fields import Base64ImageField
 from .models import User
 
@@ -25,10 +25,6 @@ class BasePermissionSeializer(serializers.ModelSerializer):
         model = Permission
         fields = ('__all__')
 
-class ExtendedPermissionsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserPermission
-        fields = ('__all__')
 
 class BaseGroupSerializer(serializers.ModelSerializer):
     permissions_list = BasePermissionSeializer(many=True, read_only=True, source='permissions')
@@ -36,24 +32,6 @@ class BaseGroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
         fields = ('__all__')
-
-class ExtendedGroupSerializer(serializers.ModelSerializer):
-    # This requires a custom validate() method
-    permissions_list = BasePermissionSeializer(many=True, read_only=True, source='permissions')
-    permissions = serializers.ManyRelatedField(child_relation=serializers.PrimaryKeyRelatedField(queryset=Permission.objects.all(), many=True, allow_null=True), allow_null=True)
-    class Meta:
-        model = UserGroup
-        fields = ('__all__')
-
-        def validate(self, data):
-            print('validate data', data)
-            try:
-                data['permissions'] = data.pop('permissions_id')
-            except KeyError:
-                print('We had an error adding the permission to the UserGroup')
-                pass
-
-            return data
 
 
 class UserSerializer(serializers.ModelSerializer):

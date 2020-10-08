@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
+
 import Home from '../views/Home.vue'
+import About from '../views/About.vue'
+import leftDrawer from "@/components/navigation/left-drawer-component"
 
 Vue.use(VueRouter)
 
@@ -8,16 +12,20 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    components: {
+			main: Home,
+			left: leftDrawer
+		}
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+		path: "/admin",
+		name: "admin",
+		meta: { requiresAuth: false },
+		components: {
+			main: About,
+			left: leftDrawer
+		}
+	},
 ]
 
 const router = new VueRouter({

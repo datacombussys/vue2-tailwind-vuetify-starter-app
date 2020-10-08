@@ -29,3 +29,200 @@ body {
 	height: 100%;
 	font-family: 'Open Sans', sans-serif;
 }
+.container {
+	margin: 10px 25px;
+}
+h1 {
+	font-size: $base-font-size * 3;
+	line-height: $base-font-size;
+}
+h2 {
+	font-size: $base-font-size * 2;
+	line-height: $base-font-size;
+}
+h3 {
+	font-size: $base-font-size * 1.5;
+	line-height: $base-font-size;
+}
+p {
+	font-size: $base-font-size;
+	font-family: 'Open Sans', sans-serif;
+}
+ul {
+	li {
+		font-size: $base-font-size;
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 500;
+	}
+}
+.headline {
+	display: block;
+	font-size: $base-font-size*1.4;
+	font-family: 'Montserrat', sans-serif;
+}
+.headline-1 {
+	display: block;
+	font-size: $base-font-size*2;
+	font-family: 'Montserrat', sans-serif;
+}
+.headline-2 {
+	display: block;
+	font-size: $base-font-size*1.8;
+	font-family: 'Montserrat', sans-serif;
+}
+.headline-3 {
+	display: block;
+	font-size: $base-font-size*1.6;
+	font-family: 'Montserrat', sans-serif;
+}
+.headline-4 {
+	display: block;
+	font-size: $base-font-size*1.4;
+	font-family: 'Montserrat', sans-serif;
+}
+.headline-5 {
+	display: block;
+	font-size: $base-font-size*1.2;
+	font-family: 'Montserrat', sans-serif;
+}
+.headline-6 {
+	display: block;
+	font-size: $base-font-size*1;
+	font-family: 'Montserrat', sans-serif;
+}
+.title {
+	display: block;
+	width: 100%;
+	font-size: $base-font-size*1.7;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+
+}
+.subtitle {
+	display: block;
+	width: 100%;
+	font-size: $base-font-size*.7;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+
+}
+.display-1 {
+	display: block;
+	font-size: $base-font-size*2;
+	font-family: 'Open Sans', sans-serif;
+}
+
+// *************************************** Rows and Columns *****************************************//
+.row {
+	display: flex;
+	flex-direction: row;
+	width:100%;
+  margin-right: 0px;
+  margin-left: 0px;
+	.col-100p {
+    width: 100%;
+		display: flex;
+		flex-direction: row;
+	}
+	.col-95p {
+    width: 95%;
+		display: flex;
+		flex-direction: column;
+	}
+	.col-90p {
+    width: 90%;
+		display: flex;
+		flex-direction: column;
+	}
+	.col-75p {
+    width: 75%;
+		display: flex;
+		flex-direction: column;
+	}
+	.col-50p {
+    width: 50%;
+		display: flex;
+		flex-direction: column;
+	}
+	.col-40p {
+    width: 40%;
+		display: flex;
+		flex-direction: column;
+	}
+	.col-33p {
+    width: 33%;
+		display: flex;
+		flex-direction: column;
+	}
+	.col-25p {
+    width: 25%;
+		display: flex;
+		flex-direction: column;
+	}
+	.col-20p {
+    width: 20%;
+		display: flex;
+		flex-direction: column;
+	}
+	.col-10p {
+    width: 10%;
+		display: flex;
+		flex-direction: column;
+	}
+	.col-5p{
+    width: 5%;
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+
+// *************************************** Error Field *****************************************//
+
+.errorField {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100px;
+	width: 95%;
+	font-size: $base-font-size*2;
+	font-family: OpenSans Light;
+	background: rgba(187, 187, 187, 0.15);
+	text-align:center;
+	border: 2px solid rgba(14, 13, 13, 0.3);
+	margin: 15px;
+	box-shadow: 5px 5px 5px rgba(199, 199, 199, 0.8);
+}
+
+// *************************************** Material Design *****************************************//
+//MD Cards
+.v-card {
+	border: 1px solid rgba(3, 3, 3, 0.2);
+	background: white;
+	border-radius: 5px;
+	.v-card__title{
+		border-bottom: 1px solid rgba(3, 3, 3, 0.07);
+		padding-bottom: 10px;
+		background: $base-header-color
+	}
+	.spacing {
+		justify-content: space-evenly;
+	}
+}
+.compact-card {
+	
+	.v-card__title{
+		border-bottom: 2px solid rgba(3, 3, 3, 0.4);
+		padding: 5px 10px;
+		margin: 0px 0px 20px 0px;
+		background: lighten($base-header-color, 30%);
+	}
+	.v-card__subtitle{
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 500;
+	}
+}
+
+.md-menu-content{
+	background: white;
+}

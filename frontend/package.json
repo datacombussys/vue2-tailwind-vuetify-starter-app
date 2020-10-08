@@ -11,6 +11,8 @@
     "@babel/polyfill": "^7.4.4",
     "@mdi/font": "^3.6.95",
     "core-js": "^3.6.5",
+    "devextreme": "20.1.7",
+    "devextreme-vue": "20.1.7",
     "lodash": "^4.17.20",
     "moment": "^2.27.0",
     "roboto-fontface": "*",

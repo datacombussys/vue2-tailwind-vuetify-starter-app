@@ -92,22 +92,22 @@ class User(CommonUserBase):
 		return str(self.full_name)
 
 
-class UserGroup(Group):
-# Inherits with name, and ID
-# Has Many-to-Many with Permissions
-# *Use permissions.set()* for adding permissions to group or use Forward-side
-# Need to make a script to auto poolulate group_class e.g. Employee, Customer, Vendor, etc.
-	date_added      = models.DateField(verbose_name="date added", auto_now_add=True)
-	group_type      = models.CharField(max_length=100, null=True, blank=True)
-	group_class     = models.CharField(max_length=100, null=True, blank=True)
+# class UserGroup(Group):
+# # Inherits with name, and ID
+# # Has Many-to-Many with Permissions
+# # *Use permissions.set()* for adding permissions to group or use Forward-side
+# # Need to make a script to auto poolulate group_class e.g. Employee, Customer, Vendor, etc.
+# 	date_added      = models.DateField(verbose_name="date added", auto_now_add=True)
+# 	group_type      = models.CharField(max_length=100, null=True, blank=True)
+# 	group_class     = models.CharField(max_length=100, null=True, blank=True)
 
 
-#Django Permissions Model 
-class UserPermission(Permission):
-	#Has ForeignKey to ContentType
-	# Inherits with name, content_type(model) and codename (of permission in the model)
-	date_added 						= models.DateField(verbose_name="date joined",auto_now_add=True)
-	permission_category   = models.CharField(max_length=100, null=True, blank=True)
+# #Django Permissions Model 
+# class UserPermission(Permission):
+# 	#Has ForeignKey to ContentType
+# 	# Inherits with name, content_type(model) and codename (of permission in the model)
+# 	date_added 						= models.DateField(verbose_name="date joined",auto_now_add=True)
+# 	permission_category   = models.CharField(max_length=100, null=True, blank=True)
 
 
 

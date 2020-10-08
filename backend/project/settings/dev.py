@@ -3,7 +3,6 @@ from .base import *
 DEBUG = True
 
 MIDDLEWARE += [
-    'commons.flushmidware.flushWare',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
 ]

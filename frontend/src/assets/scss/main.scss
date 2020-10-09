@@ -55,11 +55,6 @@ ul {
 		font-weight: 500;
 	}
 }
-.headline {
-	display: block;
-	font-size: $base-font-size*1.4;
-	font-family: 'Montserrat', sans-serif;
-}
 .headline-1 {
 	display: block;
 	font-size: $base-font-size*2;
@@ -111,6 +106,41 @@ ul {
 	font-size: $base-font-size*2;
 	font-family: 'Open Sans', sans-serif;
 }
+//Active router Links for Navigation Drawer
+.v-navigation-drawer {
+	.v-navigation-drawer__content {
+		div {
+			.v-list {
+				a {
+					.v-list-item {
+						.v-list-item__content {
+							.v-list-item__title {
+								font-size: $base-font-size*.7;
+								font-family: 'Montserrat', sans-serif;
+								font-weight: 300;
+							} 
+						}
+					}
+				}
+				.router-link-exact-active {
+					.v-list-item {
+						background: rgba(5, 5, 5, .5);
+						.v-list-item__icon {
+							.v-icon {
+								color: lighten($warning-color, 20%);
+							}
+							
+						}
+						.v-list-item__content {
+							color: lighten($warning-color, 20%);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 
 // *************************************** Rows and Columns *****************************************//
 .row {
@@ -175,8 +205,42 @@ ul {
 		flex-direction: column;
 	}
 }
-
-
+.col-12 {
+	padding: 0px;
+}
+.col-11 {
+	padding: 0px;
+}
+.col-10 {
+	padding: 0px;
+}
+.col-9 {
+	padding: 0px;
+}
+.col-8 {
+	padding: 0px;
+}
+.col-7 {
+	padding: 0px;
+}
+.col-6 {
+	padding: 0px;
+}
+.col-5 {
+	padding: 0px;
+}
+.col-4 {
+	padding: 0px;
+}
+.col-3 {
+	padding: 0px;
+}
+.col-2 {
+	padding: 0px;
+}
+.col-1 {
+	padding: 0px;
+}
 // *************************************** Error Field *****************************************//
 
 .errorField {
@@ -203,10 +267,18 @@ ul {
 	.v-card__title{
 		border-bottom: 1px solid rgba(3, 3, 3, 0.07);
 		padding-bottom: 10px;
-		background: $base-header-color
+		background: $primary-color;
+		margin-bottom: 20px;
+		color: white;
+		box-shadow: 2px 2px 8px 1px rgba(0 ,0, 0, 0.4); //X-offset, Y-offset, blur, spread, color
 	}
 	.spacing {
 		justify-content: space-evenly;
+	}
+	.v-card__subtitle{
+		font-family: 'Open Sans', sans-serif;
+		font-weight: 500;
+		
 	}
 }
 .compact-card {
@@ -225,4 +297,15 @@ ul {
 
 .md-menu-content{
 	background: white;
+}
+
+.dashboard-number {
+	width: 200px;
+	height: 100px;
+	background: rgb(214, 241, 250);
+	font-size: 3em;
+	font-weight: 400;
+	text-align: center;
+	padding: 40px 10px;
+	border: rgba(0, 0, 0, 0.3) solid 2px;
 }

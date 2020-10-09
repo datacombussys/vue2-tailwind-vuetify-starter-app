@@ -5,20 +5,21 @@
       color="primary"
       dark
     >
+			<template>
+				<v-img
+					:src="require('./assets/static/granite_mountain_logo.svg')"
+					class="my-3"
+					contain
+					height="60"
+				/>
+			</template>
+			
 
-			<v-img
-				:src="require('./assets/static/granite_mountain_logo.svg')"
-				class="my-3"
-				contain
-				height="60"
-			/>
-
-			<v-spacer></v-spacer>
         
-        <p class="headline">
+        <div class="headline-4">
 					Granite Mountain Charter School
-				</p>
-      </div>
+				</div>
+  
 
       <v-spacer></v-spacer>
 
@@ -50,32 +51,40 @@
 				</v-list>
 			</v-menu>
 
-		
-			
-       
-
     </v-app-bar>
-	
-		<v-navigation-drawer
-      v-model="drawer"
-      :mini-variant.sync="mini"
-      permanent
-			app
-			expand-on-hover
-			dark
-			
-		>
-			<router-view :onDrawer="mini" name="left"></router-view>
-		</v-navigation-drawer>
+
+		<!--No Drawer Content-->
 
     <v-main>
-      <router-view name="main"></router-view>
+			<router-view
+				@navHome="navHome">
+			</router-view>
+
+      <router-view name="main">
+				<slot name="leftDrawer"/>
+			</router-view>
+
+			<template v-if="showDrawer" slot:leftDrawer>
+				<v-navigation-drawer
+					v-model="drawer"
+					:mini-variant.sync="mini"
+					permanent
+					app
+					expand-on-hover
+					dark
+				>
+					<router-view :onDrawer="mini" name="left"></router-view>
+				</v-navigation-drawer>
+			</template>
+		
+		
     </v-main>
   </v-app>
 </template>
 
 <script>
-
+import { mapGetters } from "vuex"
+import { mapState } from "vuex"
 
 export default {
   name: 'App',
@@ -86,6 +95,8 @@ export default {
 
   data: () => ({
 		// Main Data
+		currentRoute: null,
+		//Drawer
 		mini: true,
 		drawer: true, 
 		showMenu: false,
@@ -95,6 +106,37 @@ export default {
 			{ title: 'Click Me' },
 			{ title: 'Click Me 2' },
 		],
-  })
+	}),
+	methods: {
+		testButton() {
+
+		},
+		navHome(evt) {
+			console.log("navHome", evt)
+			this.currentRoute = "Home"
+		}
+
+	},
+	computed: {
+		...mapState([]),
+		...mapGetters([]),
+		showDrawer() {
+			switch(this.currentRoute) {
+				case "Home":
+					return false
+					break
+					case "Shopping Cart":
+					return false
+					break
+			}
+			return true
+		}
+
+
+	},
+	mounted() {
+		this.currentRoute = this.$route.name
+		console.log('this.$route.name',this.$route.name)
+	}
 }
 </script>

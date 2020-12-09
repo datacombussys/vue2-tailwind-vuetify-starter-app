@@ -1,47 +1,45 @@
+const permissions = {
+	'superuser': 1,
+	'administrator': 2,
+	'merchant': 3,
 
-
+}
 
 const main = [
-	{ title: 'Home', icon: 'mdi-home', path: '/' },
-	{ title: 'Dashboard', icon: 'mdi-gauge', path: '/' },
-	{ title: 'Admin', icon: 'mdi-account-supervisor-circle', path: '/admin' },
-	{ title: 'Vendors', icon: 'mdi-cube-send', path: '/' },
-	{ title: 'Teachers', icon: 'mdi-teach', path: '/'},
-	{ title: 'Parents', icon: 'mdi-account-child-circle', path: '/' },
+  { title: 'Home', icon: 'mdi-home', path: '/', permission: permissions.superuser },
+  { title: 'Dashboard', icon: 'mdi-gauge', path: '/', permission: permissions.superuser },
+  { title: 'Admin', icon: 'mdi-account-supervisor-circle', path: '/admin', permission: permissions.superuser },
+  { title: 'Vendors', icon: 'mdi-cube-send', path: '/vendor', permission: permissions.superuser },
+  { title: 'Teachers', icon: 'mdi-teach', path: '/teacher', permission: permissions.superuser },
+  { title: 'Parents', icon: 'mdi-account-child-circle', path: '/parent', permission: permissions.superuser }
 ]
 
-const admin = [
-	{ title: 'Home', icon: 'mdi-home', path: '/' },
-	{ title: 'Dashboard', icon: 'mdi-gauge', path: '/admin' },
-	{ title: 'Manage Teachers', icon: 'mdi-teach', path: '/admin/teachers' },
-	{ title: 'Manage Vendors', icon: 'mdi-truck-fast-outline', path: '/admin/vendors' },
-	{ title: 'Manage Parents', icon: 'mdi-account-child-outline', path: '/admin/parents' },
-	{ title: 'Manage Students', icon: 'mdi-human-male-child', path: '/admin/students' },
-	{ title: 'Purchase Orders', icon: 'mdi-post-outline', path: '/admin/POs' },
-	{ title: 'Settings', icon: 'mdi-cog', path: '/admin/settings' }
+const superuser = [
+  { title: 'Home', icon: 'mdi-home', path: '/', permission: permissions.superuser },
+	{ title: 'Dashboard', icon: 'mdi-gauge', path: '/superuser', permission: permissions.superuser },
+	{ title: 'Manage Schools', icon: 'mdi-school', path: '/superuser/schools', permission: permissions.superuser },
+	{ title: 'Manage SuperUsers', icon: 'mdi-account-tie', path: '/superuser/superuser', permission: permissions.superuser },
+  { title: 'Manage Admins', icon: 'mdi-account-cog', path: '/superuser/admin', permission: permissions.superuser }
 ]
 
-const teacher = [
-	{ title: 'Home', icon: 'mdi-home', path: '/' },
-	{ title: 'Dashboard', icon: 'mdi-gauge', path: '/teacher'},
-	{ title: 'Approve Orders', icon: 'mdi-account-supervisor-circle', path: '/teacher/aprove' },
+const merchant = [
+  { title: 'Home', icon: 'mdi-home', path: '/', permission: permissions.superuser },
+  { title: 'Dashboard', icon: 'mdi-gauge', path: '/admin', permission: permissions.administrator },
+  { title: 'Manage Teachers', icon: 'mdi-teach', path: '/admin/teachers', permission: permissions.administrator },
+  { title: 'Manage Parents', icon: 'mdi-account-child-outline', path: '/admin/parents', permission: permissions.administrator },
+  { title: 'Manage Students', icon: 'mdi-human-male-child', path: '/admin/students', permission: permissions.administrator },
+  { title: 'Manage Vendors', icon: 'mdi-truck-fast-outline', path: '/admin/vendors', permission: permissions.administrator },
+  { title: 'Manage Inventory', icon: 'mdi-package-variant', path: '/products-services', permission: permissions.administrator },
+	{ title: 'Purchase Orders', icon: 'mdi-post-outline', path: '/admin/POs', permission: permissions.administrator },
+	{ title: 'Email Notifications', icon: 'mdi-email', path: '/admin/email/notifications', permission: permissions.administrator },
+	// { subtitle: 'Email Templates', icon: 'mdi-email', path: '/admin/email/templates', permissions.administrator },
+  { title: 'Settings', icon: 'mdi-cog', path: '/admin/settings', permission: permissions.administrator }
 ]
 
-const parent = [
-	{ title: 'Home', icon: 'mdi-home', path: '/' },
-	{ title: 'Dashboard', icon: 'mdi-gauge', path: '/parent' },
-	{ title: 'New Order', icon: 'mdi-account-supervisor-circle', path: '/order' },
-	{ title: 'Order Historyr', icon: 'mdi-account-supervisor-circle', path: '/order-history' },
-]
 
-const vendor = [
-	{ title: 'Home', icon: 'mdi-home', path: '/' },
-	{ title: 'Dashboard', icon: 'mdi-gauge', path: '/vendor' },
-	{ title: 'Vendor Catalog', icon: 'mdi-account-supervisor-circle', path: '/vendor/catalog' },
-]
+
 
 export { main }
-export { admin }
-export { teacher }
-export { parent }
-export { vendor }
+export { superuser }
+export { merchant }
+

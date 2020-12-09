@@ -55,10 +55,8 @@ import moment from 'moment';
 
 //Import NavLinks
 import { main } from "@/routes/app-navigation"
-import { admin } from "@/routes/app-navigation"
-import { teacher } from "@/routes/app-navigation"
-console.log("teacher", teacher)
-import { parent } from "@/routes/app-navigation"
+import { superuser } from "@/routes/app-navigation"
+import { merchant } from "@/routes/app-navigation"
 
 
 export default {
@@ -80,7 +78,7 @@ export default {
 			openLeftDrawer: false,
 			navRoute: null,
 			//vuetify stuff
-			items: admin,
+			items: main,
 
 			item: 1
 		}
@@ -108,21 +106,18 @@ export default {
 	mounted() {
 		this.navRoute = this.$route.name
 		switch(this.navRoute) {
-			case "admin":
-				this.items = admin
+			case "Superuser":
+				this.items = superuser
 				break
-			case "teacher":
-				this.items = teacher
+			case "Merchant":
+				this.items = merchant
 				break
-			case "parent":
-				this.items = parent
-				break
-			case "main":
+			case "Home":
 				this.items = main
 				break
 		}
 		console.log("this.$route.name", this.$route.name)
-		console.log("teacher", teacher)
+
 
 	}
 }

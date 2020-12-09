@@ -29,9 +29,7 @@
 /* Barcode 39 */
 /* font-family: 'Libre Barcode 39', cursive; */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap');
-/* Barcode 39 with text */
-/* font-family: 'Libre Barcode 39 Extended Text', cursive; */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
+
 /* Barcode 128 */
 /* font-family: 'Libre Barcode 128', cursive; */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128&display=swap');
@@ -39,3 +37,17 @@
 /* font-family: 'Libre Barcode 128 Text', cursive; */
 @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&display=swap');
 
+/* Work Sans*/
+/* font-family: 'Work Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Import Local installed fonts */
+@font-face {
+  font-family: 'EAN-13';
+  src: local('./EAN-13.ttf') format('truetype'), 
+}
+
+@font-face {
+  font-family: 'UPC-A';
+	src: local('./UPC-A.ttf') format("truetype");
+}

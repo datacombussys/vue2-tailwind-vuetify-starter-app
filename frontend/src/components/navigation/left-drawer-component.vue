@@ -54,11 +54,11 @@ import { mapGetters } from 'vuex';
 import moment from 'moment';
 
 //Import NavLinks
-import { main } from "@/router/app-navigation"
-import { admin } from "@/router/app-navigation"
-import { teacher } from "@/router/app-navigation"
+import { main } from "@/routes/app-navigation"
+import { admin } from "@/routes/app-navigation"
+import { teacher } from "@/routes/app-navigation"
 console.log("teacher", teacher)
-import { parent } from "@/router/app-navigation"
+import { parent } from "@/routes/app-navigation"
 
 
 export default {

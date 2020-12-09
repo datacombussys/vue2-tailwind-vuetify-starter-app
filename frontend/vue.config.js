@@ -5,7 +5,7 @@ module.exports = {
   runtimeCompiler: true,
   devServer: {
     port: 9000,
-    open: false,
+    open: true,
     disableHostCheck: true,
     overlay: {
       warnings: false,

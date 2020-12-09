@@ -21,9 +21,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from .serializers import (UserSerializer, 
                         LoginSerializer,   
-                        AlternativeLoginSerializer,
-                        ChangePasswordSerializer,
-                        ManagerApprovalBarcodeSerializer, 
+                        ChangePasswordSerializer, 
                         ContentTypeSerializer, 
                         BasePermissionSeializer,  
                         BaseGroupSerializer, 
@@ -47,14 +45,14 @@ class BaseGroupViewSet(viewsets.ModelViewSet):
   queryset = Group.objects.all()
 
 
-class UserProfileViewset(viewsets.ModelViewSet):
+class UserViewset(viewsets.ModelViewSet):
 	serializer_class = UserSerializer
 	queryset = User.objects.all()
 	authentication_classes = (TokenAuthentication, )
 	# permission_classes = (IsAuthenticated, AdminSuperAdmin, )
-	filter_backends = [DjangoFilterBackend, filters.SearchFilter]
-	filterset_fields = ['username', 'id', 'email']
-	search_fields = ['username', 'id', 'email']
+	filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
+	filterset_fields = ['first_name', 'email']
+	search_fields = ['id', 'email']
 	ordering_fields = '__all__'
 	ordering = ['id']
 
@@ -64,14 +62,12 @@ class UserListViewset(viewsets.ModelViewSet):
 
 class UserLoginAPIView(ObtainAuthToken):
 	"""Handles creating user auth tokens"""
-	renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
+	# renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
 	def post(self, request, *args, **kwargs):
 		print('Login request', request)
 		print('Login kwargs', kwargs)
 		
-		#Need to find the User associated Company and concat the Company ID to the email address
-		# print('User.objects.last()', User.objects.last())
 		serializer = self.serializer_class(data=request.data,
 																				context={'request': request})
 		serializer.is_valid(raise_exception=True)
@@ -80,20 +76,11 @@ class UserLoginAPIView(ObtainAuthToken):
 
 		print('user.__dict__', user.__dict__)
 
-		if user.employee:
-			return Response({
-				'token': token.key,
-				'id': user.pk,
-				'email': user.email,
-				'employee': user.employee.id
-			})
-		elif user.customer:
-			return Response({
-				'token': token.key,
-				'id': user.pk,
-				'email': user.email,
-				'customer': user.customer.id
-			})
+		return Response({
+			'token': token.key,
+			'id': user.pk,
+			'email': user.email,
+		})
 
 class UserLogOutAPIView(APIView):
 	"""Handles removing user auth tokens"""

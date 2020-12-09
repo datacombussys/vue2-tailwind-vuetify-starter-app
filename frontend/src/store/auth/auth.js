@@ -30,7 +30,9 @@ export const Auth = {
 			console.log("state.userProfile", state.userProfile)
 		},
 		SET_FULL_PROFILE(state, payload) {
-			state.fullUserProfile = payload
+			Vue.set(state.fullUserProfile, payload)
+			// state.fullUserProfile = payload
+			console.log('state.fullUserProfile', state.fullUserProfile)
 		},
     LOG_OUT_USER (state, payload) {
       state.isAuthenticated = false
@@ -156,15 +158,10 @@ export const Auth = {
 			let superUserList = await dispatch('GETSuperUserList')
 			console.log('superUserList', superUserList)
 			
-			//Get List of All Schools
-			let schoolList = await dispatch('GETSchoolList')
-			console.log('schoolList', schoolList)
+			//Get List of All Merchants
+			let merchantList = await dispatch('GETMerchantList')
+			console.log('merchantList', merchantList)
 
-			//Get List of All Vendors for Superuser Access
-			//If user = is_superuser load all Vendors else load school-vendors
-			let vendorList = await dispatch('GETVendorList')
-			console.log('vendorList', vendorList)
-			
 		},
 		async LOADUserData({ dispatch, commit, state, rootState }, profile) {
 			console.group('LOADUserData')
@@ -173,40 +170,18 @@ export const Auth = {
 				let response = await dispatch("FILTERSuperUserProfileById", profile)
 				commit('SET_FULL_PROFILE', response)
 				console.log('state.fullUserProfile', state.fullUserProfile)
-				//GET Admin List
-				dispatch('GETAdminList')
 				
-			} else if(profile.is_admin) {
-				let response = await dispatch("FILTERAdminProfileById", profile)
-				commit('SET_FULL_PROFILE', response)
-				console.log('state.fullUserProfile', state.fullUserProfile)
-
-				//Get User Specific Data
-				await dispatch("LOADUserData", response)
-
-			} else if(profile.is__teacher) {
-				let response = await dispatch("FILTERTeacherProfileById", profile)
-				commit('SET_FULL_PROFILE', response)
-
-			} else if(profile.is_parent) {
-				let response = await dispatch("FILTERParentProfileById", profile)
-				commit('SET_FULL_PROFILE', response)
-
-			} else if(profile.is_student) {
-				let response = await dispatch("FILTERStudentProfileById", profile)
-				commit('SET_FULL_PROFILE', response)
-
-			}else if(profile.is_vendor) {
+			} else if(profile.is_merchant) {
 				let response = await dispatch("FILTEREmpoyeeProfileById", profile)
 				console.log('response', response)
 				commit('SET_FULL_PROFILE', response)
 
-				//Get User's School Specific Data
+				//Get User's Merchant Specific Data
 				console.log('state.fullUserProfile', state.fullUserProfile)
-				let schoolObj = await dispatch('GETSchoolProfileById', state.fullUserProfile.vendor_obj.school_obj)
-				console.log('schoolObj', schoolObj)
+				let merchantObj = await dispatch('GETMerchantProfileById', state.fullUserProfile.merchant_obj.merchant_obj)
+				console.log('merchantObj', merchantObj)
 
-				dispatch('GETVendorEmployeeList', {id: response.vendor})
+				dispatch('GETMerchantEmployeeList', {id: response.merchant})
 			}
 
 			//Route User to Home Page

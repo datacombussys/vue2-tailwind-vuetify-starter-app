@@ -465,7 +465,7 @@ getattr(Validation, method)(self, **data)
 var profileReader = new FileReader();
 profileReader.readAsDataURL(this.profile_img);
 profileReader.onload = (e) => {
-	this.schoolForm.profile_img = e.target.result;
+	this.merchantForm.profile_img = e.target.result;
 };
 
 ******************** PYTHON List Comprehension  *************************

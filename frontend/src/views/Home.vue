@@ -14,39 +14,15 @@
 						</router-link>
 					</div>
 					<div class="col-3">
-						<router-link v-if="$can('view', 'admin')" to="/admin">
-							Admin
+						<router-link v-if="$can('view', 'merchant')" to="/merchant">
+							Merchant
 						</router-link>
 					</div>
 					<div class="col-3">
-						<router-link v-if="$can('view', 'teacher')" to="/teacher">
-							Teacher
-						</router-link>
+		
 					</div>
 					<div class="col-3">
-						<router-link v-if="$can('view', 'parent')" to="/parent">
-							Parent
-						</router-link>
-					</div>
-				</div>
-				<div class="row my-3">
-					<div class="col-3">
-						<router-link v-if="$can('view', 'student')" to="/student">
-							Student
-						</router-link>
-					</div>
-					<div class="col-3">
-						<router-link v-if="$can('view', 'vendor')" to="/vendor">
-							Vendors
-						</router-link>
-					</div>
-					<div class="col-3">
-						<router-link v-if="$can('view', 'admin')" to="/products-services">
-							Products / Services
-						</router-link>
-					</div>
-					<div class="col-3">
-				
+	
 					</div>
 				</div>
 
@@ -58,7 +34,7 @@
 				<div class="row mb-3">
 					<div class="col-3">
 						<router-link to="/registration">
-							Registration
+							Registration - Broken
 						</router-link>
 					</div>
 					<div class="col-3">
@@ -80,28 +56,20 @@
 				<div class="row">
 					<div class="col-2">
 						<router-link :to="{ name: 'Products'}">
-							Product Listings
+							Hosted Payment Page - TBD
 						</router-link>
 					</div>
 					<div class="col-2">
-						<router-link :to="{ name: 'Product Details', params: { userId: 123 }}">
-							Product Details
-						</router-link>
+
 					</div>
 					<div class="col-2">
-						<router-link :to="{ name: 'Shopping Cart'}">
-							Shopping Cart
-						</router-link>
+
 					</div>
 					<div class="col-2">
-						<router-link :to="{ name: 'Checkout'}">
-							Checkout
-						</router-link>
+
 					</div>
 					<div class="col-2">
-						<router-link :to="{ name: 'Transaction Result'}">
-							Payment Completion
-						</router-link>
+
 					</div>
 					<div class="col-2">
 						
@@ -119,17 +87,7 @@
 				</div>
 
 			</div>
-			
 
-			<div class="row">
-				<div class="col-3">
-					<v-btn
-						color="primary"
-						@click="testButton">
-						Test Button
-					</v-btn>
-				</div>
-			</div>
 		</template>
 
 		<template v-else>

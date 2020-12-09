@@ -195,7 +195,7 @@ export default {
 			}
 			
       // Set the filter based on logged-in user unless different filterURL is passed
-      var url = '?school='
+      var url = '?merchant='
       if (payload != undefined) {
         url = payload.filterURL
       }

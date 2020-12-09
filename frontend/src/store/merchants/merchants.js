@@ -9,46 +9,46 @@ export const Merchants = {
   namespace: true,
   name: 'merchants',
   state: {
-		vendorList: [],
-		vendorProfile: {},
-		vendorOptions: {},
-		vendorEmployeeList: [],
-		vendorEmployeeProfile: {}
+		merchantList: [],
+		merchantProfile: {},
+		merchantOptions: {},
+		merchantEmployeeList: [],
+		merchantEmployeeProfile: {}
   },
   mutations: {
-		SET_VENDOR_LIST(state, payload) {
-			state.vendorList = payload
+		SET_MERCHANT_LIST(state, payload) {
+			state.merchantList = payload
 		},
-		PUSH_NEW_VENDOR(state, payload) {
-			Vue.set(state.vendorList, state.vendorList.length, payload)
+		PUSH_NEW_MERCHANT(state, payload) {
+			Vue.set(state.merchantList, state.merchantList.length, payload)
 		},
-		SET_VENDOR_PROFILE(state, payload) {
-			Vue.set(state.vendorProfile, payload);
+		SET_MERCHANT_PROFILE(state, payload) {
+			Vue.set(state.merchantProfile, payload);
 		},
 		SET_EMPLOYEE_PROFILE(state, payload) {
-			Vue.set(state.vendorEmployeeProfile, payload);
+			Vue.set(state.merchantEmployeeProfile, payload);
 		},
-		SET_VENDOR_OPTIONS(state, payload) {
-			console.log("SET_VENDOR_OPTIONS payload", payload)
-			Vue.set(state.vendorOptions, payload);
-			console.log("state.vendorOptions", state.vendorOptions)
+		SET_MERCHANT_OPTIONS(state, payload) {
+			console.log("SET_MERCHANT_OPTIONS payload", payload)
+			Vue.set(state.merchantOptions, payload);
+			console.log("state.merchantOptions", state.merchantOptions)
 		},
-		SET_VENDOR_EMPLOYEE_LIST(state, payload) {
-			state.vendorEmployeeList = payload
+		SET_MERCHANT_EMPLOYEE_LIST(state, payload) {
+			state.merchantEmployeeList = payload
 		}
   },
   actions: {
 		//OPTIONS
-		async OPTIONSVendor({commit, dispatch, rootState}) {
-			console.log("OPTIONSVendor")
+		async OPTIONSMerchant({commit, dispatch, rootState}) {
+			console.log("OPTIONSMerchant")
 			return new Promise( async (resolve, reject) => {
 				try {
-					let endpoint = 'vendors/';
-					let type = 'GET Vendor Options';
+					let endpoint = 'merchants/';
+					let type = 'GET Merchant Options';
 					let response = await apiRoutes.OPTIONSItem(dispatch, rootState, endpoint, type)
 					if(response.status === 200) {
-						console.log("OPTIONSVendor response", response);
-						commit('SET_VENDOR_OPTIONS', response.data.actions.POST);
+						console.log("OPTIONSMerchant response", response);
+						commit('SET_MERCHANT_OPTIONS', response.data.actions.POST);
 						return resolve(response)
 					} else {
 						return reject(response)
@@ -61,16 +61,16 @@ export const Merchants = {
 			});
 		},
 		//POST and CREATE Item
-		async POSTVendor({commit, dispatch, rootState}, payload) {
+		async POSTMerchant({commit, dispatch, rootState}, payload) {
 			return new Promise( async (resolve, reject) => {
 				try {
-					let endpoint = 'vendors/';
-					let type = 'Create New Vendor';
+					let endpoint = 'merchants/';
+					let type = 'Create New Merchant';
 					let response = await apiRoutes.POSTItem(dispatch, rootState,payload, endpoint, type)
-					console.log('POSTVendor response', response);
+					console.log('POSTMerchant response', response);
 					if(response.status === 201) {
 						console.log("Successful");
-						commit('PUSH_NEW_VENDOR', response.data);
+						commit('PUSH_NEW_MERCHANT', response.data);
 						return resolve(response)
 					} else {
 						return reject(response)
@@ -84,14 +84,14 @@ export const Merchants = {
 		},
 
 		//GET LISTS
-		async GETVendorList({commit, dispatch, rootState}) {
+		async GETMerchantList({commit, dispatch, rootState}) {
 			return new Promise( async (resolve, reject) => {
 				try {
-					let endpoint = 'vendors-list/';
-					let type = 'Get Vendors List';
+					let endpoint = 'merchants-list/';
+					let type = 'Get Merchants List';
 					let response = await apiRoutes.GETList(dispatch, rootState, endpoint, type);
-					console.log('GETVendorsList response', response);
-					commit('SET_VENDOR_LIST', response.data);
+					console.log('GETMerchantsList response', response);
+					commit('SET_MERCHANT_LIST', response.data);
 					return resolve(response.data)
 
 				} catch(error) {
@@ -103,15 +103,15 @@ export const Merchants = {
 				return error;
 			});
 		},
-		//GET Vendor Employees by ID by FILTER
-		async GETVendorEmployeeList({commit, dispatch, rootState}, payload) {
+		//GET Merchant Employees by ID by FILTER
+		async GETMerchantEmployeeList({commit, dispatch, rootState}, payload) {
 			return new Promise( async (resolve, reject) => {
 				try {
-					let endpoint = 'employees-list/?vendor=';
-					let type = 'Get Vendor Employees List';
+					let endpoint = 'employees-list/?merchant=';
+					let type = 'Get Merchant Employees List';
 					let response = await apiRoutes.FILTERListById(dispatch, rootState, payload, endpoint, type);
-					console.log('GETVendorEmployeeList response', response);
-					commit('SET_VENDOR_EMPLOYEE_LIST', response.data);
+					console.log('GETMerchantEmployeeList response', response);
+					commit('SET_MERCHANT_EMPLOYEE_LIST', response.data);
 					return resolve(response.data)
 
 				} catch(error) {
@@ -124,18 +124,18 @@ export const Merchants = {
 			});
 		},
 
-    // GET Logged In Vendor Profile Profile By Id
-    GETVendorProfileById ({ commit, dispatch, rootState }, payload) {
-      console.log('GETVendorProfileById')
+    // GET Logged In Merchant Profile Profile By Id
+    GETMerchantProfileById ({ commit, dispatch, rootState }, payload) {
+      console.log('GETMerchantProfileById')
       return new Promise(async (resolve, reject) => {
         try {
-          console.log('GETVendorProfileById payload', payload)
-          const endpoint = 'vendors/?id='
-          const type = 'Get Vendor Profile'
+          console.log('GETMerchantProfileById payload', payload)
+          const endpoint = 'merchants/?id='
+          const type = 'Get Merchant Profile'
           const response = await apiRoutes.GETProfileById(dispatch, rootState, payload, endpoint, type)
           if (response.status === 200) {
-            console.log('GETVendorProfileById response', response)
-            commit('SET_VENDOR_PROFILE', response.data)
+            console.log('GETMerchantProfileById response', response)
+            commit('SET_MERCHANT_PROFILE', response.data)
             return resolve(response.data)
           } else {
             return reject({ message: response })
@@ -152,13 +152,13 @@ export const Merchants = {
         }
       })
 		},
-		// FILTER VendorUser Profile Profile By Id
+		// FILTER MerchantUser Profile Profile By Id
     FILTEREmpoyeeProfileById ({ commit, dispatch, rootState }, payload) {
       console.log('FILTEREmpoyeeProfileById payload', payload)
       return new Promise(async (resolve, reject) => {
         try {
           const endpoint = 'employees/?user__id='
-          const type = 'Get Vendor Employee Profile'
+          const type = 'Get Merchant Employee Profile'
           const response = await apiRoutes.FILTERListById(dispatch, rootState, payload, endpoint, type)
           if (response.status === 200) {
             console.log('FILTEREmpoyeeProfileById response', response)
@@ -182,17 +182,17 @@ export const Merchants = {
 
   },
   getters: {
-		GET_VENDOR_LIST(state) {
-			return state.vendorList
+		GET_MERCHANT_LIST(state) {
+			return state.merchantList
 		},
-		GET_VENDOR_OPTIONS(state) {
-			return state.vendorOptions
+		GET_MERCHANT_OPTIONS(state) {
+			return state.merchantOptions
 		},
-		GET_VENDOR_EMPLOYEES_LIST(state) {
-			return state.vendorEmployeeList
+		GET_MERCHANT_EMPLOYEES_LIST(state) {
+			return state.merchantEmployeeList
 		},
 		GET_EMPLOYEE_PROFILE(state) {
-			return state.vendorEmployeeProfile
+			return state.merchantEmployeeProfile
 		}
   }
 }

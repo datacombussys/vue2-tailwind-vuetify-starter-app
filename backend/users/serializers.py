@@ -126,60 +126,6 @@ class LoginSerializer(serializers.ModelSerializer):
             raise exceptions.ValidationError(msg)
         return data
 
-class AlternativeLoginSerializer(serializers.Serializer):
-    barcode_number = serializers.CharField(max_length=20)
-    pin = serializers.CharField(max_length=4)    
-        
-    def validate(self, data):
-        barcode_number = data.get('barcode_number', "")
-        pin = data.get('pin', "")
-        if data['barcode_number'] and data['pin']:
-            try:
-                barcode = UserBarcode.objects.get(barcode_number = data['barcode_number'])
-            except UserBarcode.DoesNotExist:
-                raise Http404("No Barcode match for the given barcode number.")
-            
-            if barcode.user.pin == data['pin']:
-                data['user'] = barcode.user
-                return data
-            else:
-                msg = "Unable to login User with credentials"
-                raise exceptions.ValidationError(msg)
-        else:
-            msg = "You must provide a barcocde number and PIN"
-            raise exceptions.ValidationError(msg)
-        return data
-
-class ManagerApprovalBarcodeSerializer(serializers.Serializer):
-    barcode_number = serializers.CharField(max_length=20)
-    pin = serializers.CharField(max_length=4)  
-        
-    def validate(self, data):
-        print('Serializer Validate 1')
-        barcode_number = data.get('barcode_number', "")
-        pin = data.get('pin', "")
-        if data['barcode_number'] and data['pin']:
-            try:
-                barcode = UserBarcode.objects.get(barcode_number = data['barcode_number'])
-            except UserBarcode.DoesNotExist:
-                raise Http404("No Barcode match for the given barcode number.")
-            
-            if barcode.user.pin == data['pin']:
-                data['user'] = barcode.user
-                print(data['user'])
-                if data['user'].is_admin or data['user'].is_superuser:
-                    return data
-                else:
-                    msg = "You need to have approval from an admin account"
-                    raise exceptions.ValidationError(msg)
-            else:
-                msg = "Unable to  verify manager with provided credentials"
-                raise exceptions.ValidationError(msg)
-        else:
-            msg = "You must provide a barcocde number and PIN"
-            raise exceptions.ValidationError(msg)
-        return data
-
 
 class ChangePasswordSerializer(serializers.Serializer):
     email = serializers.CharField(max_length=200)

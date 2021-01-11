@@ -11,35 +11,51 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    "proxy": {
+    proxy: {
       "/django": {
-        "target": "http://localhost:9010",
-        "secure": false
+				pathRewrite: {'/django/' : ''},
+				// pathRewrite: function(path, req) {
+				// 	console.log('path', path)
+				// 	// console.log('req', req)
+				// 	if(path.indexOf("/django/" >= 0)) {
+				// 		const replacedPath = path.replace("/django/", "")
+				// 		console.log('replacedPath', replacedPath)
+				// 		return replacedPath
+				// 	}
+				// },
+        "target": "http://localhost:9010/",
       },
       "/node": {
+				pathRewrite: function(path, req) {
+					console.log('path', path)
+					// console.log('req', req)
+					if(path.indexOf("/node/" >= 0)) {
+						const replacedPath = path.replace("/node/", "")
+						console.log('replacedPath', replacedPath)
+						return replacedPath
+					}
+				},
         "target": "http://localhost:9020",
         "secure": false
       }
     }
-  },
+	},
+	
   configureWebpack: {
     module: {
       rules: []
     },
     plugins: []
-  }
+  },
   // "transpileDependencies": [
   //   "vuetify"
   // ],
   // chainWebpack: config => {
-  //   config.plugin('copy').tap(args => {
-  //     const copyCordova = {
-  //       from: path.resolve(__dirname, 'src-cordova/config.xml'),
-  //       to: args[0][0].to
-  //     }
-
-  //     args[0].push(copyCordova)
-  //     return args
-  //   })
-  // },
+	// 	config
+	// 		.plugin('html')
+	// 		.tap(args => {
+	// 				args[0].title = "Patient Payment Portal";
+	// 				return args;
+	// 		})
+	// },
 }

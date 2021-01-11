@@ -258,8 +258,8 @@ export default {
 		// this.$store.dispatch('preFetchLogin')
 	},
   async mounted () {
-    this.currentRoute = this.$route.name
-    console.log('mounted this.$route.name', this.$route.name)
+    // this.currentRoute = this.$route.name
+    // console.log('mounted this.$route.name', this.$route.name)
   }
 }
 </script>

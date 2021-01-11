@@ -7,11 +7,11 @@ import vuetify from './plugins/vuetify'
 import '@babel/polyfill'
 
 //Import Plugins Modules
-import './plugins'
+// import './plugins'
 
 //Store and Subscribers
 import store from './store'
-require("@/js/vuex-subscribers");
+require("@/js/subscribers");
 
 //Dev Express
 import 'devextreme/dist/css/dx.common.css';
